@@ -15,6 +15,9 @@ mongoose.connect(process.env.DB_URL, {
 // Crear servidor
 const app = express();
 
+// Carpeta publica
+app.use(express.static("uploads"));
+
 const PORT = process.env.PORT || 5000;
 
 // Habilitar body parser
@@ -40,9 +43,6 @@ app.use(cors(corsOptions));
 
 // Rutas
 app.use("/", routes());
-
-// Carpeta publica
-app.use(express.static("uploads"));
 
 app.listen(PORT, () => {
     console.log(`Server corriendo en http://localhost:${PORT}`);
