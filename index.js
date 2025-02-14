@@ -25,21 +25,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Definir un dominio para recibir peticiones
-const whitelist = [process.env.FRONTEND_URL];
-const corsOptions = {
-    origin: (origin, callback) => {
-        // Revizar si la peticion viene de un servidor en whitelist
-        const existe = whitelist.some((dominio) => dominio === origin);
-        if (existe) {
-            callback(null, true);
-        } else {
-            callback(new Error("No permitido por CORS"));
-        }
-    },
-};
+// const whitelist = [process.env.FRONTEND_URL];
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//         // Revizar si la peticion viene de un servidor en whitelist
+//         const existe = whitelist.some((dominio) => dominio === origin);
+//         if (existe) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error("No permitido por CORS"));
+//         }
+//     },
+// };
 
 // Habilitar CORS
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // Rutas
 app.use("/", routes());
