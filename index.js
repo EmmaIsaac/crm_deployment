@@ -10,6 +10,7 @@ const cors = require("cors");
 // Conectar a la base de datos
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
 // Crear servidor
@@ -18,7 +19,7 @@ const app = express();
 // Carpeta publica
 app.use(express.static("uploads"));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
